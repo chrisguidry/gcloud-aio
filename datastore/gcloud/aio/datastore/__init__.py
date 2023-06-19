@@ -175,8 +175,7 @@ class MyGQLQuery(gcloud.aio.datastore.GQLQuery):
     value_kind = MyValue
 ```
 """
-from pkg_resources import get_distribution
-__version__ = get_distribution('gcloud-aio-datastore').version
+import sys
 
 from gcloud.aio.datastore.constants import CompositeFilterOperator
 from gcloud.aio.datastore.constants import Consistency
@@ -200,16 +199,23 @@ from gcloud.aio.datastore.lat_lng import LatLng
 from gcloud.aio.datastore.mutation import MutationResult
 from gcloud.aio.datastore.projection import Projection
 from gcloud.aio.datastore.property_order import PropertyOrder
-from gcloud.aio.datastore.transaction_options import ReadOnly
-from gcloud.aio.datastore.transaction_options import ReadWrite
-from gcloud.aio.datastore.transaction_options import TransactionOptions
 from gcloud.aio.datastore.query import GQLCursor
 from gcloud.aio.datastore.query import GQLQuery
 from gcloud.aio.datastore.query import Query
 from gcloud.aio.datastore.query import QueryResultBatch
+from gcloud.aio.datastore.transaction_options import ReadOnly
+from gcloud.aio.datastore.transaction_options import ReadWrite
+from gcloud.aio.datastore.transaction_options import TransactionOptions
 from gcloud.aio.datastore.value import Value
 
 
+if sys.version_info >= (3, 8):
+    from importlib import metadata
+else:
+    import importlib_metadata as metadata
+
+
+__version__ = metadata.version('gcloud-aio-datastore')
 __all__ = [
     'CompositeFilter',
     'CompositeFilterOperator',

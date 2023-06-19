@@ -41,16 +41,23 @@ Additionally, the `Token` constructor accepts the following optional arguments:
 
 [service-account]: https://console.cloud.google.com/iam-admin/serviceaccounts
 """
-from pkg_resources import get_distribution
-
-__version__ = get_distribution('gcloud-aio-auth').version
+import sys
 
 from gcloud.aio.auth.build_constants import BUILD_GCLOUD_REST
 from gcloud.aio.auth.iam import IamClient
 from gcloud.aio.auth.session import AioSession
 from gcloud.aio.auth.token import Token
-from gcloud.aio.auth.utils import decode, encode
+from gcloud.aio.auth.utils import decode
+from gcloud.aio.auth.utils import encode
 
+
+if sys.version_info >= (3, 8):
+    from importlib import metadata
+else:
+    import importlib_metadata as metadata
+
+
+__version__ = metadata.version('gcloud-aio-auth')
 __all__ = [
     'AioSession',
     'BUILD_GCLOUD_REST',
