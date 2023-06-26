@@ -406,7 +406,7 @@ testing = ["big-O", "flake8 (<5)", "jaraco.functools", "jaraco.itertools", "more
 [metadata]
 lock-version = "1.1"
 python-versions = ">= 3.7, < 4.0"
-content-hash = "e5fe44bfd121648be7d7fcd80ab524f179e1f94af8910fd4ff41ca1228b1e929"
+content-hash = "3c0f606f5270aae803e9e8e446ca09fa77351e0333d187779234cfee957c9710"
 
 [metadata.files]
 aiofiles = [
